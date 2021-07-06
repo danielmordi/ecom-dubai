@@ -35,11 +35,11 @@
                     <div class="card shadow-sm bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title">Order Now</h5>
-                            @if (session()->has('success'))
-                            <div class="alert alert-success" role="alert">
-                                <strong>{{ session('success') }}</strong>
-                            </div>
-                            @else
+{{--                            @if (session()->has('success'))--}}
+{{--                            <div class="alert alert-success" role="alert">--}}
+{{--                                <strong>{{ session('success') }}</strong>--}}
+{{--                            </div>--}}
+{{--                            @else--}}
                             <form action="{{ route('order.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -131,7 +131,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 text-uppercase">order now</button>
                             </form>
-                            @endif
+{{--                            @endif--}}
                         </div>
                     </div>
                 </div>
@@ -139,10 +139,6 @@
                 <h5 class="text-muted">Description</h5>
                 <p class="lead">
                     {{ $product->product_description }}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsa voluptatem cupiditate! Nihil
-                    laboriosam,
-                    numquam neque iste placeat sequi, magni quibusdam soluta facere nostrum eligendi labore ex porro
-                    possimus quas!
                 </p>
             </div>
         </div>

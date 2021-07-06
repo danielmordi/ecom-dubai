@@ -35,10 +35,10 @@ class NewOrder extends Mailable
             'customerName' => $this->order->customer_name,
             'qty' => $this->order->order_quantity,
             'totalPrice' => $this->order->total_amount,
-            'price' => $this->order->products[0]->product_price ?? false,
-            'productName' => $this->order->products[0]->product_name ?? false,
+            'price' => $this->order->product->product_price ?? false,
+            'productName' => $this->order->product->product_name ?? false,
             'dateOrdered' => $this->order->created_at->format('d-M-Y'),
-            'url' => route('view', $this->order->products->first()->slug ?? false)
+            'url' => route('view', $this->order->product->slug ?? false)
         ]);
     }
 }

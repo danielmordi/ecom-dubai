@@ -36,11 +36,11 @@
                     <div class="card shadow-sm bg-white rounded">
                         <div class="card-body">
                             <h5 class="card-title">Order Now</h5>
-                            <?php if(session()->has('success')): ?>
-                            <div class="alert alert-success" role="alert">
-                                <strong><?php echo e(session('success')); ?></strong>
-                            </div>
-                            <?php else: ?>
+
+
+
+
+
                             <form action="<?php echo e(route('order.store')); ?>" method="post">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
@@ -207,7 +207,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 text-uppercase">order now</button>
                             </form>
-                            <?php endif; ?>
+
                         </div>
                     </div>
                 </div>
@@ -216,10 +216,6 @@ unset($__errorArgs, $__bag); ?>
                 <p class="lead">
                     <?php echo e($product->product_description); ?>
 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In ipsa voluptatem cupiditate! Nihil
-                    laboriosam,
-                    numquam neque iste placeat sequi, magni quibusdam soluta facere nostrum eligendi labore ex porro
-                    possimus quas!
                 </p>
             </div>
         </div>

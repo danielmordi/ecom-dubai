@@ -17,9 +17,9 @@ class Order extends Model
         'order_quantity', 'is_delivered', 'total_amount'
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->hasMany(Product::class, 'id');
+        return $this->belongsTo(Product::class);
     }
 
     public function getTotalAmountAttribute($total_amount)

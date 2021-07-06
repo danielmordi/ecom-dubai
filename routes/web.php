@@ -41,6 +41,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 
 Route::get('test', function () {
-    $order = App\Models\Order::find(21);
-    return new NewOrder($order);
+    $orders = Order::find(12)->product;
+    dd($orders->product_name);
 });

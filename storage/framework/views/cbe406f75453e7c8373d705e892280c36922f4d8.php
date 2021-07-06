@@ -51,7 +51,7 @@
     // toastr
     $(document).ready(function () {
         <?php if(session()->has('success')): ?>
-        toastr.success('<?php echo e(session('success')); ?>')
+            toastr.success("<?php echo e(session('success')); ?>")
         <?php endif; ?>
     });
 </script>

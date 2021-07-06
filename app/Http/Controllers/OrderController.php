@@ -49,11 +49,12 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $request->validate([
+            'product_id'=> 'required',
             'name' => 'required|string',
             'tel_no' => 'required|digits:10',
             'city' => 'required|string',
@@ -66,8 +67,6 @@ class OrderController extends Controller
         $product_price = preg_replace('/[^0-9.]/', '', $product->product_price);
         $product_price = floatval($product_price);
 
-//        dd($request->all());
-
         $order = new Order;
         $order->product_id = $request->input('product_id');
         $order->customer_name = $request->input('name');
@@ -79,12 +78,10 @@ class OrderController extends Controller
         $order->save();
 
         //  Send mail notification
-//        $adminMail = User::get()->first();
+        $adminMail = User::get()->first()->email;
+        Mail::to("$adminMail")->send(new NewOrder($order));
 
-        Mail::to('test@mail.com')->send(new NewOrder($order));
-
-        return redirect()->back()->with('success', 'Your order has been placed successfully.
-         You will recieve a call from our agent to confrim your order.');
+        return redirect()->back()->with('success', 'Your order has been placed successfully. You will receive a call from our agent to confirm your order.');
 
     }
 

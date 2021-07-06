@@ -51,7 +51,7 @@
     // toastr
     $(document).ready(function () {
         @if (session()->has('success'))
-        toastr.success('{{ session('success') }}')
+            toastr.success("{{ session('success') }}")
         @endif
     });
 </script>
