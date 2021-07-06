@@ -66,7 +66,9 @@
                     </table>
                 </div>
                 <div class="mt-2">
-                    <a href="<?php echo e(route('orders.delivered', $order->id)); ?>" class="btn btn-success btn-square">Mark as: delivered</a>
+                    <a href="<?php echo e($order->is_delivered == false ? route('orders.delivered', $order->id) : 'javascript:void()'); ?>"
+                       class="btn btn-<?php echo e($order->is_delivered == false ? 'success' : 'secondary'); ?> btn-square"
+                       ><?php echo e($order->is_delivered == false ? 'Mark as: delivered' : 'Order delivered!'); ?></a>
                 </div>
             </div>
         </div>

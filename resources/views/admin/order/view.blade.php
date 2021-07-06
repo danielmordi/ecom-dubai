@@ -66,7 +66,9 @@
                     </table>
                 </div>
                 <div class="mt-2">
-                    <a href="{{ route('orders.delivered', $order->id) }}" class="btn btn-success btn-square">Mark as: delivered</a>
+                    <a href="{{ $order->is_delivered == false ? route('orders.delivered', $order->id) : 'javascript:void()' }}"
+                       class="btn btn-{{ $order->is_delivered == false ? 'success' : 'secondary' }} btn-square"
+                       >{{ $order->is_delivered == false ? 'Mark as: delivered' : 'Order delivered!' }}</a>
                 </div>
             </div>
         </div>

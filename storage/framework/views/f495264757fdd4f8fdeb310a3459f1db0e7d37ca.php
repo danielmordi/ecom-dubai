@@ -2,7 +2,7 @@
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
             <li>
-                <a class="ai-icon" href="#">
+                <a class="ai-icon" href="<?php echo e(route('home')); ?>">
                     <i class="flaticon-381-networking"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
