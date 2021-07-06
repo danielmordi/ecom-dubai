@@ -19,7 +19,7 @@
                 <div class="widget-stat card shadow shadow-lg">
                     <div class="card-body p-4">
                         <h4 class="card-title">Total Orders</h4>
-                        <h3>{{ count($orders) }}</h3>
+                        <h3>{{ count($t_order) }}</h3>
                         <div class="progress mb-2">
                             <div class="progress-bar progress-animated bg-primary" style="width: 80%"></div>
                         </div>
@@ -58,12 +58,12 @@
                 </thead>
                 <tbody>
                 @foreach($orders as $order)
-                    @foreach($order->products as $product)
-                        @dd($product)
-                    @endforeach
+{{--                    @foreach($order->products as $product)--}}
+{{--                        @dd($product)--}}
+{{--                    @endforeach--}}
                     <tr data-href="{{ route('orders.view', $order->id) }}">
                         <td></td>
-                        <td>{{ dd($order) }}</td>
+                        <td>{{ $order->products[0]->product_name ?? false }}</td>
                         <td>{{ $order->order_quantity }}</td>
                         <td>{{ $order->customer_name }}</td>
                         <td>{{ $order->customer_tel_no }}</td>

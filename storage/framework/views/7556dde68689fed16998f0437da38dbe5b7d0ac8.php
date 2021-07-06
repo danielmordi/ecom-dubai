@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title text-uppercase"><?php echo e($order->products[0]->product_name); ?></h4>
+                <h4 class="card-title text-uppercase"><?php echo e($order->products[0]->product_name ?? false); ?></h4>
             </div>
             <div class="card-body">
                 <h3>Order Details</h3>
@@ -47,9 +47,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><?php echo e($order->products[0]->product_name); ?></td>
+                                <td><?php echo e($order->products[0]->product_name ?? false); ?></td>
                                 <td><?php echo e($order->order_quantity); ?></td>
-                                <td><?php echo e($order->products[0]->product_price); ?></td>
+                                <td><?php echo e($order->products[0]->product_price ?? false); ?></td>
                                 <td>
                                     <p class="badge badge-<?php echo e($order->is_delivered == false ? 'warning' : 'success'); ?>">
                                         <?php echo e($order->is_delivered == false ? 'Not yet delivered' : 'Delivered'); ?>

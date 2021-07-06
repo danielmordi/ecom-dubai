@@ -41,7 +41,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 
 Route::get('test', function () {
-    $order = App\Models\Order::find(1);
-    $adminMail = User::get()->first();
+    $order = App\Models\Order::find(21);
     return new NewOrder($order);
 });

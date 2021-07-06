@@ -22,13 +22,15 @@ class HomeController extends Controller
     public function adminDashboard()
     {
         $order = Order::latest()->paginate(5);
+        $t_order = Order::get();;
         $totalSales = Order::where('is_delivered', true)->sum('total_amount');
         $products = Product::all();
 
         return view('admin.dashboard')->with([
             'orders' => $order,
             'total_sales' => $totalSales,
-            'products' => $products
+            'products' => $products,
+            't_order' => $t_order
         ]);
     }
 

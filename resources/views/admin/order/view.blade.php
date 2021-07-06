@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title text-uppercase">{{ $order->products[0]->product_name }}</h4>
+                <h4 class="card-title text-uppercase">{{ $order->products[0]->product_name ?? false }}</h4>
             </div>
             <div class="card-body">
                 <h3>Order Details</h3>
@@ -48,9 +48,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $order->products[0]->product_name }}</td>
+                                <td>{{ $order->products[0]->product_name ?? false }}</td>
                                 <td>{{ $order->order_quantity }}</td>
-                                <td>{{ $order->products[0]->product_price }}</td>
+                                <td>{{ $order->products[0]->product_price ?? false }}</td>
                                 <td>
                                     <p class="badge badge-{{ $order->is_delivered == false ? 'warning' : 'success' }}">
                                         {{ $order->is_delivered == false ? 'Not yet delivered' : 'Delivered' }}

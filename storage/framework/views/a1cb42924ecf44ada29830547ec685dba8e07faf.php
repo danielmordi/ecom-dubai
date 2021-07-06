@@ -17,7 +17,7 @@
                 <div class="widget-stat card shadow shadow-lg">
                     <div class="card-body p-4">
                         <h4 class="card-title">Total Orders</h4>
-                        <h3><?php echo e(count($orders)); ?></h3>
+                        <h3><?php echo e(count($t_order)); ?></h3>
                         <div class="progress mb-2">
                             <div class="progress-bar progress-animated bg-primary" style="width: 80%"></div>
                         </div>
@@ -56,12 +56,12 @@
                 </thead>
                 <tbody>
                 <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php $__currentLoopData = $order->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php dd($product); ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+
                     <tr data-href="<?php echo e(route('orders.view', $order->id)); ?>">
                         <td></td>
-                        <td><?php echo e(dd($order)); ?></td>
+                        <td><?php echo e($order->products[0]->product_name ?? false); ?></td>
                         <td><?php echo e($order->order_quantity); ?></td>
                         <td><?php echo e($order->customer_name); ?></td>
                         <td><?php echo e($order->customer_tel_no); ?></td>

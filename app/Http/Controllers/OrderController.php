@@ -66,18 +66,20 @@ class OrderController extends Controller
         $product_price = preg_replace('/[^0-9.]/', '', $product->product_price);
         $product_price = floatval($product_price);
 
-        $order = Order::create([
-            'product_id' => $request->input('product_id'),
-            'customer_name' => $request->input('name'),
-            'customer_tel_no' => $request->input('tel_no'),
-            'customer_city' => $request->input('city'),
-            'customer_address' => $request->input('addr'),
-            'order_quantity' => $request->input('qty'),
-            'total_amount' => $product_price * intval($request->input('qty'))
-        ]);
+//        dd($request->all());
+
+        $order = new Order;
+        $order->product_id = $request->input('product_id');
+        $order->customer_name = $request->input('name');
+        $order->customer_tel_no = $request->input('tel_no');
+        $order->customer_city = $request->input('addr');
+        $order->customer_address = $request->input('addr');
+        $order->order_quantity = $request->input('qty');
+        $order->total_amount = $product_price * intval($request->input('qty'));
+        $order->save();
 
         //  Send mail notification
-        $adminMail = User::get()->first();
+//        $adminMail = User::get()->first();
 
         Mail::to('test@mail.com')->send(new NewOrder($order));
 
