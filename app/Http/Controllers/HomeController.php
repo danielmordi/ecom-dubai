@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate();
+        $products = Product::get();
         $categories = Category::get();
         return view('home')->with([
             'products' => $products,

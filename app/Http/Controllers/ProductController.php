@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Sopamo\LaravelFilepond\Filepond;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -44,12 +45,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->hasFile('productImage')) {
-            $file = $request->file('productImage');
+        if ($request->productImage) {
+            $file = $request->productImage;
             $filename = trim($file->getClientOriginalName());
             $file->storeAs('uploads/', $filename, ['disk' => 'public']);
         }
-
         $request->validate([
             "p_name" => "required",
             "p_price" => "required|numeric",
@@ -62,6 +62,7 @@ class ProductController extends Controller
         $product = Product::create([
             'product_image' => $filename,
             'product_name' => $request->p_name,
+            'slug' => Str::slug($request->p_name),
             'product_description' => $request->p_description,
             'product_price' => $request->p_price,
             'discounted_price' => $request->discounted_price,

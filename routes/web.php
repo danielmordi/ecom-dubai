@@ -14,7 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Mail\NewOrder;
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('product/{id}', [HomeController::class, 'view'])->name('view');
+Route::get('/product/{slug}', [HomeController::class, 'view'])->name('view');
 Route::post('order', [OrderController::class, 'store'])->name('order.store');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {

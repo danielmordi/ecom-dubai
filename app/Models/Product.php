@@ -15,7 +15,7 @@ class Product extends Model
     protected $fillable = [
         'product_name', 'product_image', 'product_price',
         'product_description', 'discounted_price', 'product_sold',
-        'product_stock_conut', 'category_id'
+        'product_stock_conut', 'category_id', 'slug'
     ];
 
     public function getProductPriceAttribute($price)

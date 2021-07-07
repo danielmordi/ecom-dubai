@@ -34,6 +34,7 @@
                             <small class=""
                                 style="position: absolute; top: 10px; color: green; padding: 0.5em; background:#fff; font-size:10px; font-weight: bold; letter-spacing: 1.5px">FREE
                                 DELIVERY</small>
+{{--                            @dd($product->slug)--}}
                             <a href="{{ route('view', $product->slug) }}">
                                 <img src="{{ asset('uploads/'.$product->product_image) }}"
                                 class="card-img-top" alt="" style="object-fit: cover; min-height: 200px !important;">
