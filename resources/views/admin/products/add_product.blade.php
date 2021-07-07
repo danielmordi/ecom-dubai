@@ -37,19 +37,19 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ asset('uploads/'.$product->product_image?? '') }}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                                                <img src="{{ isset($product->id) ? asset('uploads/'.$product->product_image) : '' }}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="file" name="productImage" class="form-control form-control-sm " multiple  value="{{ $product->product_image ?? old('productImage') }}">
+                                <input type="file" name="productImage" class="form-control form-control-sm " multiple  value="{{ isset($product->id) ? $product->product_image : old('productImage') }}">
                                 @error('productImage')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="p_name">Product Name</label>
-                                <input type="text" name="p_name" value="{{ $product->product_name ?? old('p_name') }}" id="p_name" class="form-control form-control-sm @error('p_name') is-invalid @enderror"
+                                <input type="text" name="p_name" value="{{ isset($product->id) ? $product->product_name : old('p_name') }}" id="p_name" class="form-control form-control-sm @error('p_name') is-invalid @enderror"
                                  placeholder="Eg. Skittles" required>
                                 @error('p_name')
                                     <small class="text-danger">{{ $message }}</small>
@@ -62,11 +62,13 @@
                                 <select name="categoryid[]" id="multiple" multiple class="@error('categoryid[]') is-invalid @enderror">
                                     @foreach ($categories as $category)
                                     <option
+                                    @isset($product->id)
                                     @foreach ($product->categories as $productCategory)
                                         @if ($category->id == $productCategory->id)
                                             selected
                                         @endif
                                     @endforeach
+                                    @endisset
                                     value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
@@ -79,7 +81,7 @@
                             <div class="form-group col-md-6">
                                 <label for="p_price">Product Price</label>
                                 <input type="text" name="p_price"
-                                 value="{{ preg_replace("/[^0-9.]/", "", $product->product_price) ?? old('p_price') }}"
+                                 value="{{ isset($product->id) ? preg_replace("/[^0-9.]/", "", $product->product_price) : old('p_price') }}"
                                  id="p_price" class="form-control form-control-sm  @error('p_price') is-invalid @enderror" placeholder="0.00"
                                     required>
                                     @error('p_price')
@@ -89,7 +91,7 @@
                             <div class="form-group col-md-6">
                                 <label for="p_discounted_price">Product Discounted Price</label>
                                 <input type="text" name="discounted_price"
-                                value="{{ preg_replace("/[^0-9.]/", "", $product->discounted_price) ?? old('discounted_price') }}" id="p_discounted_price" class="form-control form-control-sm  @error('discounted_price') is-invalid @enderror"
+                                value="{{ isset($product->id) ? preg_replace("/[^0-9.]/", "", $product->discounted_price) : old('discounted_price') }}" id="p_discounted_price" class="form-control form-control-sm  @error('discounted_price') is-invalid @enderror"
                                     placeholder="0.00" required>
                                    @error('discounted_price')
                                         <small class="text-danger">{{ $message }}</small>
@@ -107,7 +109,7 @@
                             <div class="form-group col-md-6">
                                 <label for="p_in_stock">Product in stock</label>
                                 <input type="text" name="stock"
-                                 value="{{ $product->product_stock_conut ?? old('stock') }}" id="p_in_stock" class="form-control form-control-sm  @error('stock') is-invalid @enderror" placeholder="0" required>
+                                 value="{{ isset($product->id) ? $product->product_stock_conut : old('stock') }}" id="p_in_stock" class="form-control form-control-sm  @error('stock') is-invalid @enderror" placeholder="0" required>
                                     @error('stock')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -124,7 +126,7 @@
 
                             <script>
                                 window.onload = function() {
-                                    document.getElementById("p_description").defaultValue = "{{ trim($product->product_description) ?? old('p_description') }}";
+                                    document.getElementById("p_description").defaultValue = "{{ isset($product->id) ? trim($product->product_description) : old('p_description') }}";
                                 }
                             </script>
                         </div>

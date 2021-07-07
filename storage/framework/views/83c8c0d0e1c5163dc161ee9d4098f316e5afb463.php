@@ -35,12 +35,12 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="<?php echo e(asset('uploads/'.$product->product_image?? '')); ?>" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                                                <img src="<?php echo e(isset($product->id) ? asset('uploads/'.$product->product_image) : ''); ?>" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="file" name="productImage" class="form-control form-control-sm " multiple  value="<?php echo e($product->product_image ?? old('productImage')); ?>">
+                                <input type="file" name="productImage" class="form-control form-control-sm " multiple  value="<?php echo e(isset($product->id) ? $product->product_image : old('productImage')); ?>">
                                 <?php $__errorArgs = ['productImage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -54,7 +54,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="p_name">Product Name</label>
-                                <input type="text" name="p_name" value="<?php echo e($product->product_name ?? old('p_name')); ?>" id="p_name" class="form-control form-control-sm <?php $__errorArgs = ['p_name'];
+                                <input type="text" name="p_name" value="<?php echo e(isset($product->id) ? $product->product_name : old('p_name')); ?>" id="p_name" class="form-control form-control-sm <?php $__errorArgs = ['p_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -88,11 +88,13 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option
+                                    <?php if(isset($product->id)): ?>
                                     <?php $__currentLoopData = $product->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php if($category->id == $productCategory->id): ?>
                                             selected
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
                                     value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
@@ -112,7 +114,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="form-group col-md-6">
                                 <label for="p_price">Product Price</label>
                                 <input type="text" name="p_price"
-                                 value="<?php echo e(preg_replace("/[^0-9.]/", "", $product->product_price) ?? old('p_price')); ?>"
+                                 value="<?php echo e(isset($product->id) ? preg_replace("/[^0-9.]/", "", $product->product_price) : old('p_price')); ?>"
                                  id="p_price" class="form-control form-control-sm  <?php $__errorArgs = ['p_price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -136,7 +138,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="form-group col-md-6">
                                 <label for="p_discounted_price">Product Discounted Price</label>
                                 <input type="text" name="discounted_price"
-                                value="<?php echo e(preg_replace("/[^0-9.]/", "", $product->discounted_price) ?? old('discounted_price')); ?>" id="p_discounted_price" class="form-control form-control-sm  <?php $__errorArgs = ['discounted_price'];
+                                value="<?php echo e(isset($product->id) ? preg_replace("/[^0-9.]/", "", $product->discounted_price) : old('discounted_price')); ?>" id="p_discounted_price" class="form-control form-control-sm  <?php $__errorArgs = ['discounted_price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -182,7 +184,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="form-group col-md-6">
                                 <label for="p_in_stock">Product in stock</label>
                                 <input type="text" name="stock"
-                                 value="<?php echo e($product->product_stock_conut ?? old('stock')); ?>" id="p_in_stock" class="form-control form-control-sm  <?php $__errorArgs = ['stock'];
+                                 value="<?php echo e(isset($product->id) ? $product->product_stock_conut : old('stock')); ?>" id="p_in_stock" class="form-control form-control-sm  <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -227,7 +229,7 @@ unset($__errorArgs, $__bag); ?>
 
                             <script>
                                 window.onload = function() {
-                                    document.getElementById("p_description").defaultValue = "<?php echo e(trim($product->product_description) ?? old('p_description')); ?>";
+                                    document.getElementById("p_description").defaultValue = "<?php echo e(isset($product->id) ? trim($product->product_description) : old('p_description')); ?>";
                                 }
                             </script>
                         </div>
