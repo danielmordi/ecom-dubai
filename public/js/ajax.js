@@ -30,10 +30,10 @@ $(document).ready(function () {
                 setTimeout(function() {
                     $("#success").hide().html('');
                     location.reload();
-                }, 5000);
+                }, 1000);
             },
             error: function (response) {
-                console.log(JSON.parse(response.responseText).errors.category);
+                console.log(response);
                 $("#categoryMsg").addClass('text-danger');
                 $("#categoryMsg").html(JSON.parse(response.responseText).errors.category);
             }

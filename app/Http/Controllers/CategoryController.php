@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->get('category'));
         $category->save();
 
-        return Response::json([
+        return response()->json([
             'success' => 'Category was added successfully!',
         ]);
     }
