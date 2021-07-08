@@ -16,7 +16,7 @@ $(document).ready(function () {
         };
 
         let type = 'POST';
-        let url = 'category/add/';
+        let url = 'category/add';
 
         $.ajax({
             type: type,
