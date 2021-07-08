@@ -70,13 +70,13 @@
 <body>
 
 <div class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-4 bg-white border-bottom box-shadow tlogo">
-    <a href="https://www.brothers.ae/" style="display:block;text-align:center; margin:0 auto;">
+    <a href="{{ url('/') }}" style="display:block;text-align:center; margin:0 auto;">
         <img src="https://www.brothers.ae/lib/img/logo.jpg" border="0" style="margin: 0 auto;" class="logo">
     </a>
 </div>
 
 <div class="container">
-    
+
     @yield('content')
 </div>
 
