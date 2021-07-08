@@ -16,6 +16,7 @@ use App\Mail\NewOrder;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{slug}', [HomeController::class, 'view'])->name('view');
 Route::post('order', [OrderController::class, 'store'])->name('order.store');
+Route::get('orders/confirmed/{order}', [OrderController::class, 'show'])->name('order.confirmed');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Home
@@ -37,6 +38,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('orders', [OrderController::class, 'index'])->name('orders');
     Route::get('orders/view/{id}', [OrderController::class, 'view'])->name('orders.view');
     Route::get('orders/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
+    // Site Config
+    Route::get('/settings', [\App\Http\Controllers\SiteConfigController::class, 'index'])->name('settings');
 });
 
 

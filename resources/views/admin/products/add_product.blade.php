@@ -59,7 +59,8 @@
                         <div class="form-group">
                             <label for="category">Choose a category</label>
                             <fieldset>
-                                <select name="categoryid[]" id="multiple" multiple class="@error('categoryid[]') is-invalid @enderror">
+                                <select name="categoryid" id="single" class="@error('categoryid[]') is-invalid @enderror">
+                                    <option disabled selected value="">Choose</option>
                                     @foreach ($categories as $category)
                                     <option
                                     @isset($product->id)
@@ -145,13 +146,13 @@
 <script>
     // SlimSelect
     new SlimSelect({
-        select: '#multiple'
+        select: '#single'
     });
 
     // Validate
     function checkforblank() {
 
-        var location = document.getElementById('multiple');
+        var location = document.getElementById('single');
         var invalid = location.value == "";
 
         if (invalid) {

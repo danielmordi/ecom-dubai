@@ -78,7 +78,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="form-group">
                             <label for="category">Choose a category</label>
                             <fieldset>
-                                <select name="categoryid[]" id="multiple" multiple class="<?php $__errorArgs = ['categoryid[]'];
+                                <select name="categoryid" id="single" class="<?php $__errorArgs = ['categoryid[]'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -86,6 +86,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
+                                    <option disabled selected value="">Choose</option>
                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option
                                     <?php if(isset($product->id)): ?>
@@ -248,13 +249,13 @@ unset($__errorArgs, $__bag); ?>
 <script>
     // SlimSelect
     new SlimSelect({
-        select: '#multiple'
+        select: '#single'
     });
 
     // Validate
     function checkforblank() {
 
-        var location = document.getElementById('multiple');
+        var location = document.getElementById('single');
         var invalid = location.value == "";
 
         if (invalid) {

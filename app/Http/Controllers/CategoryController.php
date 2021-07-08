@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Response;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
@@ -22,6 +23,7 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = $request->get('category');
+        $category->slug = Str::slug($request->get('category'));
         $category->save();
 
         return Response::json([

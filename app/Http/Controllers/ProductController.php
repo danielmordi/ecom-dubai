@@ -67,7 +67,7 @@ class ProductController extends Controller
             'product_price' => $request->p_price,
             'discounted_price' => $request->discounted_price,
             'product_sold' => $request->sold,
-            'category_id' => json_encode($request->categoryid),
+            'category_id' => $request->categoryid,
             'product_stock_conut' => $request->stock
         ]);
 

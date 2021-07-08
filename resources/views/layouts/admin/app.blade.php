@@ -43,8 +43,12 @@
             min-width: 1em;
             margin-right: 0.5em;
         }
-        .ss-main .ss-multi-selected {
-            padding: 0.4em !important;
+        .ss-main .ss-single-selected {
+            padding: 1.4em !important;
+        }
+
+        .ss-main .ss-single-selected .placeholder, .ss-main .ss-single-selected .placeholder {
+            overflow: visible !important;
         }
     </style>
 </head>

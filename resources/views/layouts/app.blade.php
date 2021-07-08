@@ -1,60 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html class="no-js" lang="zxx">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('node_modules/@splidejs/splide/dist/css/splide.min.css') }}"/>
-    <link rel="stylesheet"
-          href="{{ asset('theme/node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css') }}"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/css/toastr.min.css') }}">
+    <title>Brothers Dubai, UAE</title>
+    <meta property="keywords" content="Mens Watches, Womens Watches, Cosmetics, Ladies Bags "/>
+    <meta property="description"
+          content="We are offering a vast range of products in best prices and with the best quality Dubai UAE"/>
+
+    <meta property="og:title" content="Brothers Dubai, UAE"/>
+    <meta property="og:description"
+          content="We are offering a vast range of products in best prices and with the best quality Dubai UAE"/>
+    <meta property="og:url" content="https://www.brothers.ae/"/>
+    <meta property="og:image" content="https://www.brothers.ae/lib/img/social.png"/>
+    <meta property="og:type" content="product"/>
+    <meta property="fb:app_id" content=""/>
+    <meta name="facebook-domain-verification" content=""/>
+    <!--META TAGES STARTS-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15"/>
+    <META content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--META TAGES ENDS-->
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" id="bootstrap-css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+
+    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/js/jquery.lazy.min.js"></script>-->
+    <script type="text/javascript" src="lib/js/all.js"></script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '900821680752324');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=900821680752324&ev=PageView&noscript=1"
+        />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
 </head>
 
 <body>
-@include('includes.theme.header')
 
-<main>
+<div class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-4 bg-white border-bottom box-shadow tlogo">
+    <a href="https://www.brothers.ae/" style="display:block;text-align:center; margin:0 auto;">
+        <img src="https://www.brothers.ae/lib/img/logo.jpg" border="0" style="margin: 0 auto;" class="logo">
+    </a>
+</div>
+
+<div class="container">
+    
     @yield('content')
-</main>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
-</script>
-<script src="{{ asset('node_modules/materialize-css/dist/js/materialize.js') }}"></script>
-<script src="{{ asset('node_modules/@splidejs/splide/dist/js/splide.js') }}"></script>
-<script src="{{ asset('assets/vendor/toastr/js/toastr.min.js') }}"></script>
+<footer class="pt-4 mt-5 border-top box-shadow">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <div class="footer-box">
+                    <h4 style="width:100%;">USEFUL LINKS</h4>
+                    <ul class="list-item">
+                        <li><a href="pg-10">About Us</a></li>
+                        <li><a href="pg-13">Un-Claimable Products</a></li>
+                        <li><a href="pg-12">Why Us?</a></li>
+                    </ul>
+                </div>
+            </div>
 
-<script>
-    $(document).ready(function () {
-        $(".sidenav").sidenav();
-        $(".dropdown-trigger").dropdown();
-    });
-</script>
+            <div class="col-sm-4 col-xs-12">
+                <div class="footer-box">
+                    <h4 style="width: 100%;">CONTACT INFO</h4>
+                    <div class="fdetail">
+                        <p>Brothers.ae</p>
+                        <p>Dubai UAE</p>
+                        <p>Facebook:&nbsp;Brothers</p>
+                        <p>Instagram: Brothers</p>
+                        <p>Email:&nbsp;<a href="mailto:Sales@Brothers.ae">Sales@Brothers.ae</a></p>
+                        <p>Whatsapp: 0502733868&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        new Splide(".splide").mount();
-    });
+            <div class="col-sm-4 col-xs-12">
+                <div class="footer-box pb-5">
+                    <h4 style="width: 100%;">ACCEPT PAYMENT</h4>
+                    <div class="fdetail">
+                        <p>CASH ON DELIVERY<br>
+                            PAYPAL AND PAYMENT METHOD COMING SOON</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    // toastr
-    $(document).ready(function () {
-        @if (session()->has('success'))
-            toastr.success("{{ session('success') }}")
-        @endif
-    });
-</script>
+<script src="{{ asset('js/all.js') }}"></script>
+
+@stack('scripts')
 </body>
 
 </html>

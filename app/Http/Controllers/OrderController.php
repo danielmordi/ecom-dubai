@@ -71,7 +71,7 @@ class OrderController extends Controller
         $order->product_id = $request->input('product_id');
         $order->customer_name = $request->input('name');
         $order->customer_tel_no = $request->input('tel_no');
-        $order->customer_city = $request->input('addr');
+        $order->customer_city = $request->input('city');
         $order->customer_address = $request->input('addr');
         $order->order_quantity = $request->input('qty');
         $order->total_amount = $product_price * intval($request->input('qty'));
@@ -81,8 +81,9 @@ class OrderController extends Controller
         $adminMail = User::get()->first()->email;
         Mail::to("$adminMail")->send(new NewOrder($order));
 
-        return redirect()->back()->with('success', 'Your order has been placed successfully. You will receive a call from our agent to confirm your order.');
 
+        // return redirect()->back()->with('success', 'Your order has been placed successfully. You will receive a call from our agent to confirm your order.');
+        return redirect()->route('order.confirmed', $order->id);
     }
 
     /**
@@ -91,9 +92,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($order)
     {
-        //
+        $order = Order::find($order);
+        return view('confirmorder')->with('order', $order);
     }
 
     /**

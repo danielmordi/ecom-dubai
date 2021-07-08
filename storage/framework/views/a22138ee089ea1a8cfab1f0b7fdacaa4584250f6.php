@@ -4,259 +4,285 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="container-fluid" style="margin-top: 2em">
-    <div class="row" style="margin-top: 1em">
-        <div class="col-md-10 offset-md-1">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 h-100">
-                    <div class="p-2">
-                        <img src="<?php echo e(asset('uploads/'.$product->product_image)); ?>" alt="" class="img-fluid w-100">
-                    </div>
-                    <h4 class="text-uppercase mt-2"><?php echo e($product->product_name); ?></h4>
-                    <div class="mt-4" style="position: relative; top: -20px;">
-                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php $__currentLoopData = $product->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($category->id == $productCategory->id): ?>
-                        <small>
-                            <a href="" class="text-muted ml-2"><?php echo e($productCategory->name); ?></a>
-                        </small>
-                        <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-
-                    <h1 style="font-family: 'Tajawal', sans-serif; letter-spacing: -1px;">
-                        <?php echo e($product->product_price); ?>
-
-                    </h1>
-                    <p class="text-muted mb-0"><?php echo e($product->product_sold); ?> sold</p>
-                    <p class="text-muted"><?php echo e($product->product_stock_conut); ?> in stock</p>
-                </div>
-                <div class="col-md-6 col-sm-12 h-100 pt-2">
-                    <div class="card shadow-sm bg-white rounded">
-                        <div class="card-body">
-                            <h5 class="card-title">Order Now</h5>
-
-
-
-
-
-                            <form action="<?php echo e(route('order.store')); ?>" method="post">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
-                                <div class="form-group mb-2 <?php $__errorArgs = ['name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                                    <label for="">Fullname<small class="text-danger">*</small></label>
-                                    <input type="text" name="name" value="<?php echo e(old('name')); ?>" id="name"
-                                        placeholder="Full name" class="form-control" required>
-                                    <?php $__errorArgs = ['name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <small class="invalid-feedback" role="alert">
-                                        <?php echo e($message); ?>
-
-                                    </small>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">Tel<small class="text-danger">*</small></label>
-                                    <input type="tel" name="tel_no" value="<?php echo e(old('tel_no')); ?>" id="tel_no"
-                                        placeholder="052XXXXXX"
-                                        class="form-control pl-4 <?php $__errorArgs = ['tel_no'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" required=""
-                                        style="padding-left: 86px;">
-                                    <img src="https://www.brothers.ae/lib/img/AE.png" alt="" width="20" style="
-                                        position: absolute;
-                                        top: 162px;
-                                        left: 37px;
-                                        width: 20px;
-                                        height: 26px;">
-                                    <div class="code" style="
-                                        position: absolute;
-                                        top: 165px;
-                                        left: 65px;
-                                        font-size: 14px;
-                                        font-weight: 500;
-                                    ">+971</div>
-                                    <?php $__errorArgs = ['tel_no'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <small class="invalid-feedback" role="alert">
-                                        <?php echo e($message); ?>
-
-                                    </small>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">Quantity<small class="text-danger">*</small></label>
-                                    <select class="form-control <?php $__errorArgs = ['qty'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="qty" id="">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                    <?php $__errorArgs = ['qty'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <small class="invalid-feedback" role="alert">
-                                        <?php echo e($message); ?>
-
-                                    </small>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">Emirates<small class="text-danger">*</small></label>
-                                    <select class="form-control <?php $__errorArgs = ['city'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="city" id="">
-                                        <option value="">Select City*</option>
-                                        <option value="DUBAI">DUBAI - Free delivery</option>
-                                        <option value="ABU DHABI">ABU DHABI - Free delivery</option>
-                                        <option value="SHARJAH">SHARJAH - Free delivery</option>
-                                        <option value="AJMAN">AJMAN - Free delivery</option>
-                                        <option value="RAK">RAK - Free delivery</option>
-                                        <option value="FUJAIRAH">FUJAIRAH - Free delivery</option>
-                                        <option value="UAQ">UAQ - Free delivery</option>
-                                        <option value="AL AIN">AL AIN - Free delivery</option>
-                                    </select>
-                                    <?php $__errorArgs = ['city'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <small class="invalid-feedback" role="alert">
-                                        <?php echo e($message); ?>
-
-                                    </small>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">Delivery Address<small class="text-danger">*</small></label>
-                                    <textarea style="min-height:70px !important"
-                                        class="form-control <?php $__errorArgs = ['addr'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="addr"
-                                        placeholder="Delivery Address* (Building No, Street name, Area)"
-                                        required="required"><?php echo e(old('addr')); ?></textarea>
-                                    <?php $__errorArgs = ['addr'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <small class="invalid-feedback" role="alert">
-                                        <?php echo e($message); ?>
-
-                                    </small>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100 text-uppercase">order now</button>
-                            </form>
-
+<!-- Start Product Details -->
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 col-sm-12 dealimgs">
+                <div class="dealItem">
+                    <div class="prodbox" style="position: relative;">
+                        <div class="free-dev">Free Delivery</div>
+                        <div id="countbox"></div>
+                        <div class="pfimage">
+                            <img src="<?php echo e(asset('uploads/'.$product->product_image)); ?>" id="mainimg">
                         </div>
                     </div>
-                </div>
-                <hr>
-                <h5 class="text-muted">Description</h5>
-                <p class="lead">
-                    <?php echo e($product->product_description); ?>
+                    <div class="text">
+                        <div class="price">
+                            <strong id="proprice"><?php echo e($product->product_price); ?></strong>
+                            <span>140 AED</span>
 
-                </p>
+                            <h3 class="prosold"><?php echo e($product->product_sold); ?> Items Sold</h3>
+                        </div>
+                        <small class="pvat">AED <?php echo e($product->product_stock_conut); ?> - VAT included</small>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30 prodcol">
+                <div class="pdetailsi">
+                    <div class="pro__detl__title">
+                        <h2>Order Now</h2>
+                        <p class="d-none d-xl-block d-lg-block">Kindly fill the form & we will deliver next day(AbuDhabi
+                            2 days).</p>
+                    </div>
+                    <div class="pro__details">
+                        <form method="POST" action="<?php echo e(route('order.store')); ?>" id="orderfrm">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
+                            <div class="form-group">
+                                <label>Full Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="name"
+                                    placeholder="Full Name*" id="names" required="required" value="<?php echo e(old('name')); ?>">
+                                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="invalid-feedback" role="alert">
+                                    <?php echo e($message); ?>
+
+                                </small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                            <div class="form-group fake-input">
+                                <label>Mobile<span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control <?php $__errorArgs = ['tel_no'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                    name="tel_no" id="mobile" required="required" value="<?php echo e(old('tel_no')); ?>">
+                                <img src="https://www.brothers.ae/lib/img/AE.png" width="20">
+                                <span class="code">+971</span>
+                                <?php $__errorArgs = ['tel_no'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="invalid-feedback" role="alert">
+                                    <?php echo e($message); ?>
+
+                                </small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity<span class="text-danger">*</span></label>
+                                <select name="qty" class="form-control" required="required">
+                                    <?php for($i = 1; $i < 10; $i++): ?> <option value="<?php echo e($i); ?>"><?php echo e($i); ?> -
+                                        <?php echo e((float) filter_var($product->product_price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) * $i); ?>
+
+                                        AED</option>
+                                        <?php endfor; ?>
+                                </select>
+                                <?php $__errorArgs = ['qty'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="invalid-feedback" role="alert">
+                                    <?php echo e($message); ?>
+
+                                </small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                            <div class="form-group">
+                                <label>Emirates<span class="text-danger">*</span></label>
+                                <select name="city" class="form-control <?php $__errorArgs = ['city'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                    required="required">
+                                    <option value="">Select City*</option>
+                                    <option value="DUBAI">DUBAI - Free delivery</option>
+                                    <option value="ABU DHABI">ABU DHABI - Free delivery</option>
+                                    <option value="SHARJAH">SHARJAH - Free delivery</option>
+                                    <option value="AJMAN">AJMAN - Free delivery</option>
+                                    <option value="RAK">RAK - Free delivery</option>
+                                    <option value="FUJAIRAH">FUJAIRAH - Free delivery</option>
+                                    <option value="UAQ">UAQ - Free delivery</option>
+                                    <option value="AL AIN">AL AIN - Free delivery</option>
+                                </select>
+                                <?php $__errorArgs = ['city'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="invalid-feedback" role="alert">
+                                    <?php echo e($message); ?>
+
+                                </small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                            <div class="form-group">
+                                <label>Delivery Address<span class="text-danger">*</span></label>
+                                <textarea style="min-height:70px !important"
+                                    class="form-control materialize-textarea  <?php $__errorArgs = ['addr'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                    name="addr" placeholder="Delivery Address* (Building No, Street name, Area)"
+                                    required="required"></textarea>
+                                <?php $__errorArgs = ['addr'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <small class="invalid-feedback" role="alert">
+                                    <?php echo e($message); ?>
+
+                                </small>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+
+                            <button type="submit" id="btnfrmsubmit"
+                                class="btn btn-success btn-submit btn-block btn-lg">SUBMIT ORDER</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="detailtxt">
+                    <h3><strong>Description</strong></h3>
+                    <hr />
+                    <p>&nbsp;</p>
+
+                    <p><?php echo e($product->product_description); ?></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container mt-4">
-    <h2>You may also like</h2>
-    <hr>
+</section>
+<!-- End Product Details -->
+
+<div class="container">
     <div class="row">
-        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12" style="">
-                <div class="card shadow-lg mb-5 bg-white rounded">
-                    <small class=""
-                        style="position: absolute; top: 10px; color: green; padding: 0.5em; background:#fff; font-size:10px; font-weight: bold; letter-spacing: 1.5px">FREE
-                        DELIVERY</small>
-                    <a href="<?php echo e(route('view', $product->slug)); ?>">
-                        <img src="<?php echo e(asset('uploads/'.$product->product_image)); ?>"
-                        class="card-img-top" alt="" style="object-fit: cover; min-height: 200px !important;">
-                    </a>
-                    <div class="card-body">
-                        <h6 style="font-family: 'Tajawal', sans-serif;"><?php echo e($product->product_name); ?></h6>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div style="font-size: 18px; font-family: 'Tajawal', sans-serif; letter-spacing: -1px;">
-                                <?php echo e($product->product_price); ?>
-
-                            </div>
-                            <div class="text-danger"
-                            style="font-family: 'Tajawal', sans-serif; text-decoration: line-through; font-size: 12px;
-                                position: relative; top: 8px;">
-                                <?php echo e($product->discounted_price); ?>
-
-                            </div>
-                        </div>
-                        <a href="<?php echo e(route('view', $product->slug)); ?>" class="card-footer btn btn-dark btn-sm w-100 bg-primary text-uppercase">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+        <div class="col-12">
+            <hr>
+            <h2 class="otherp">Other Products</h2>
+        </div>
     </div>
 </div>
+
+<section class="htc__product__area pb--50 bg__white">
+    <div class="container">
+        <div class="htc__product__container">
+            <div class="row product__list">
+                <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-4 col-sm-6 col-6 product filter cat-11">
+                    <a href="<?php echo e(route('view', $product->slug)); ?>">
+                        <div class="pgrid">
+                            <div class="pimage">
+                                <img data-src="<?php echo e(asset('uploads/'.$product->product_image)); ?>" class="lazy">
+                                <span class="psold"><?php echo e($product->product_sold); ?> Sold</span>
+                                <div class="pfreed">Free Delivery</div>
+                            </div>
+                            <div class="pcontent">
+                                <h3 class="title"><?php echo e($product->product_name); ?></h3>
+                                <div class="price">
+                                    <?php echo e($product->product_price); ?>
+
+                                    <span><?php echo e($product->discounted_price); ?></span>
+                                </div>
+                                <div class="svat"><?php echo e($product->product_stock_conut); ?> AED - VAT included</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('scripts'); ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+<script>
+$(function () {
+    $('.lazy').lazy();
+});
+
+
+$(function() {
+    var arunauto = 1;
+	$(".otherimg img").click(function(e) {
+		$("#mainimg").attr("src", $(this).attr("src"));
+		$(".otherimg  img").removeClass("active");
+		$(this).addClass("active");
+		arunauto = 0;
+	});
+
+	$("#mainimg").click(function(e) {
+		arunauto = 0;
+	});
+
+	var count = 1;
+	var Interval = 6000;
+    setInterval(function() {
+        if( arunauto )
+        {
+           var active = $(".otherimg .active").removeClass('active');
+           if(active.next() && active.next().length){
+                active.next().addClass('active');
+            }
+            else{
+              active.siblings(":first").addClass('active');
+            }
+             $("#mainimg").attr("src", $(".otherimg .active").attr("src"));
+        }
+    }, Interval);
+});
+</script>
+<?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /mnt/c/xampp/htdocs/ecom/resources/views/view.blade.php ENDPATH**/ ?>

@@ -23,7 +23,7 @@
                     <span class="nav-text">Orders</span>
                 </a>
             </li>
-            <li><a class="ai-icon" href="#">
+            <li><a class="ai-icon" href="<?php echo e(route('settings')); ?>">
                     <i class="flaticon-381-heart"></i>
                     <span class="nav-text">Settings</span>
                 </a>
