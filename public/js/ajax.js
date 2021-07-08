@@ -33,7 +33,6 @@ $(document).ready(function () {
                 }, 1000);
             },
             error: function (response) {
-                console.log(response);
                 $("#categoryMsg").addClass('text-danger');
                 $("#categoryMsg").html(JSON.parse(response.responseText).errors.category);
             }
