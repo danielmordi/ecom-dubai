@@ -5,23 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\TemporaryFile;
-use Illuminate\Http\Request;
-use Sopamo\LaravelFilepond\Filepond;
+use App\Models\SiteConfig;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\TemporaryFile;
+use Sopamo\LaravelFilepond\Filepond;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::paginate(20);
-        return view('admin.products.product')->with('products', $products);
+        $config = SiteConfig::find(1);
+
+        return view('admin.products.product')->with(['products' => $products, 'config' => $config,]);
     }
 
     public function create()
     {
         $category = Category::get();
-        return view('admin.products.add_product')->with('categories', $category);
+        $config = SiteConfig::find(1);
+
+        return view('admin.products.add_product')->with(['categories' => $category, 'config' => $config]);
     }
 
     public function storeMedia(Request $request)
@@ -50,6 +55,7 @@ class ProductController extends Controller
             $filename = trim($file->getClientOriginalName());
             $file->storeAs('uploads/', $filename, ['disk' => 'public']);
         }
+
         $request->validate([
             "p_name" => "required",
             "p_price" => "required|numeric",
@@ -78,16 +84,21 @@ class ProductController extends Controller
     public function view($id)
     {
         $product = Product::find($id);
-        return view('admin.products.view')->with('product', $product);
+        $config = SiteConfig::find(1);
+
+        return view('admin.products.view')->with(['product' => $product, 'config' => $config,]);
     }
 
     public function edit($id)
     {
         $product = Product::find($id);
         $categories = Category::get();
+        $config = SiteConfig::find(1);
+
         return view('admin.products.add_product')->with([
             'product' => $product,
-            'categories' => $categories
+            'categories' => $categories,
+            'config' => $config,
         ]);
     }
 

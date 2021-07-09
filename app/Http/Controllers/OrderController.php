@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\User;
 use App\Models\Order;
 use App\Mail\NewOrder;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\SiteConfig;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,8 +21,10 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::latest()->paginate(10);
+        $config = SiteConfig::find(1);
         return view('admin.order.order')->with([
             'orders' => $orders,
+            'config' => $config,
         ]);
     }
 
@@ -30,9 +33,12 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $categories = Category::get();
+        $config = SiteConfig::find(1);
+
         return view('admin.order.view')->with([
             'order' => $order,
-            'categories' => $categories
+            'categories' => $categories,
+            'config' => $config,
         ]);
     }
 
@@ -95,7 +101,9 @@ class OrderController extends Controller
     public function show($order)
     {
         $order = Order::find($order);
-        return view('confirmorder')->with('order', $order);
+        $config = SiteConfig::find(1);
+
+        return view('confirmorder')->with(['order' => $order, 'config' => $config,]);
     }
 
     /**

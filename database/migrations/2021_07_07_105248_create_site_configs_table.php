@@ -15,6 +15,13 @@ class CreateSiteConfigsTable extends Migration
     {
         Schema::create('site_configs', function (Blueprint $table) {
             $table->id();
+            $table->string('logo')->nullable();
+            $table->string('sitename')->nullable();
+            $table->string('location')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('email')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->timestamps();
         });
     }

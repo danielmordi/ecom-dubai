@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\SiteConfig;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,6 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $config = SiteConfig::find(1);
         $categories = Category::paginate(10);
         return view('admin.category')->with('categories', $categories);
     }

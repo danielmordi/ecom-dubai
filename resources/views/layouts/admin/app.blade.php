@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="_token" content="{{ csrf_token() }}">
-    <title>kripton - Crypto Admin Dashboard </title>
+    <title>My dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.brothers.ae/favicon.ico">
     <link rel="stylesheet" href="{{ asset('assets/vendor/chartist/css/chartist.min.css') }}">
     <link href="{{ asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
@@ -28,7 +28,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
     <link href="{{ asset('assets/vendor/lightgallery/css/lightgallery.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/css/toastr.min.css') }}">
 
@@ -43,12 +44,22 @@
             min-width: 1em;
             margin-right: 0.5em;
         }
+
         .ss-main .ss-single-selected {
             padding: 1.4em !important;
         }
 
-        .ss-main .ss-single-selected .placeholder, .ss-main .ss-single-selected .placeholder {
+        .ss-main .ss-single-selected .placeholder,
+        .ss-main .ss-single-selected .placeholder {
             overflow: visible !important;
+        }
+
+        .preview {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background: white;
+            cursor: pointer;
         }
     </style>
 </head>

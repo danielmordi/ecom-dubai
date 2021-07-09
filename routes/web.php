@@ -11,7 +11,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SiteConfigController;
 use App\Mail\NewOrder;
+use App\Models\SiteConfig;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{slug}', [HomeController::class, 'view'])->name('view');
@@ -39,11 +41,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('orders/view/{id}', [OrderController::class, 'view'])->name('orders.view');
     Route::get('orders/delivered/{id}', [OrderController::class, 'delivered'])->name('orders.delivered');
     // Site Config
-    Route::get('/settings', [\App\Http\Controllers\SiteConfigController::class, 'index'])->name('settings');
+    Route::get('settings', [\App\Http\Controllers\SiteConfigController::class, 'index'])->name('settings');
+    Route::post('settings/update/contact-info', [SiteConfigController::class, 'contactInfo'])->name('settings.update');
+    Route::post('settings/update/logo', [SiteConfigController::class, 'storeLogo'])->name('settings.update.logo');
 });
 
 
-Route::get('test', function () {
-    $orders = Order::find(12)->product;
-    dd($orders->product_name);
-});
+// Route::get('test', function () {
+//     $orders = Order::find(12)->product;
+//     dd($orders->product_name);
+// });

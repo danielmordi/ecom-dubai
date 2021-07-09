@@ -10,6 +10,7 @@ class SiteConfig extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'logo', 'sitename', 'location', 'facebook',
+        'instagram', 'email', 'whatsapp'
     ];
 }
