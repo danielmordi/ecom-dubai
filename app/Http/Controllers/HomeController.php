@@ -53,4 +53,24 @@ class HomeController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function aboutus()
+    {
+        $config = SiteConfig::find(1);
+
+        return view('aboutus')->with('config', $config);
+    }
+
+    public function whyus()
+    {
+        $config = SiteConfig::find(1);
+
+        return view('whyus')->with('config', $config);
+    }
+    public function unclaimed()
+    {
+        $config = SiteConfig::find(1);
+
+        return view('unclaimed')->with('config', $config);
+    }
 }

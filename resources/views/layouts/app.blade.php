@@ -72,7 +72,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center px-md-4 mb-4 bg-white border-bottom box-shadow tlogo">
     <a href="{{ url('/') }}" style="display:block;text-align:center; margin:0 auto;">
         <img src="{{ asset('storage/logo/'. $config->logo) ?? '' }}" border="0" style="margin: 0 auto;"
-         width="75" class="logo">
+         width="100" class="logo">
     </a>
 </div>
 
@@ -88,9 +88,9 @@
                 <div class="footer-box">
                     <h4 style="width:100%;">USEFUL LINKS</h4>
                     <ul class="list-item">
-                        <li><a href="pg-10">About Us</a></li>
-                        <li><a href="pg-13">Un-Claimable Products</a></li>
-                        <li><a href="pg-12">Why Us?</a></li>
+                        <li><a href="{{ route('about') }}">About Us</a></li>
+                        <li><a href="{{ route('unclaimed') }}">Un-Claimable Products</a></li>
+                        <li><a href="{{ route('whyus') }}">Why Us?</a></li>
                     </ul>
                 </div>
             </div>

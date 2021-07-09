@@ -19,6 +19,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{slug}', [HomeController::class, 'view'])->name('view');
 Route::post('order', [OrderController::class, 'store'])->name('order.store');
 Route::get('orders/confirmed/{order}', [OrderController::class, 'show'])->name('order.confirmed');
+Route::get('aboutus', [HomeController::class, 'aboutus'])->name('about');
+Route::get('whyus', [HomeController::class, 'whyus'])->name('whyus');
+Route::get('unclaimed', [HomeController::class, 'unclaimed'])->name('unclaimed');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Home
